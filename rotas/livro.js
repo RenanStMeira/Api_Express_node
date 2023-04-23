@@ -1,7 +1,7 @@
 // rota de livro
  // Importar
 const { Router } = require ('express');
-const { getLivros, getLivro } = require('../controladores/livro')
+const { getLivros, getLivro, postLivro, patchLivro, deleteLivro } = require('../controladores/livro')
 
 const router = Router();
 
@@ -13,20 +13,14 @@ router.get('/:id', getLivro)
 
 
 // POST
-router.post('/', (req, res) => {
-    res.send('Voccê fez uma requisição do tipo POST')
-});
+router.post('/', postLivro);
 
 
 // PATCH
-router.patch('/', (req, res) => {
-    res.send('Voccê fez uma requisição do tipo PATCH')
-});
+router.patch('/:id', patchLivro);
 
 
 // DELETE
-router.delete('/', (req, res) => {
-    res.send('Voccê fez uma requisição do tipo DELETE')
-})
+router.delete('/:id', deleteLivro)
 
 module.exports = router
